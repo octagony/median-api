@@ -34,11 +34,19 @@ export class ArticlesService {
   }
 
   async update(id: number, dto: UpdateArticleDto) {
-    return this.prisma.article.update({
+    return await this.prisma.article.update({
       where: {
         id,
       },
       data: dto,
+    });
+  }
+
+  async delete(id: number) {
+    return await this.prisma.article.delete({
+      where: {
+        id,
+      },
     });
   }
 }
