@@ -1,30 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateArticleDto } from './dto/create-article.dto';
 
 @Injectable()
 export class ArticlesService {
   constructor(private prisma: PrismaService) {}
 
-  findAll() {
-    return this.prisma.article.findMany({
+  async findAll() {
+    return await this.prisma.article.findMany({
       where: {
         published: true,
       },
     });
   }
 
-  findDrafts() {
-    return this.prisma.article.findMany({
+  async findDrafts() {
+    return await this.prisma.article.findMany({
       where: {
         published: false,
       },
     });
   }
-  findOne(id: number) {
-    return this.prisma.article.findUnique({
+  async findOne(id: number) {
+    return await this.prisma.article.findUnique({
       where: {
         id,
       },
     });
+  }
+  async create(dto: CreateArticleDto) {
+    return await this.prisma.article.create({ data: dto });
   }
 }
