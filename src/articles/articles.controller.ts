@@ -8,4 +8,9 @@ export class ArticlesController {
   findAll() {
     return this.articlesService.findAll();
   }
+
+  @Get('drafts')
+  findDrafts() {
+    return this.articlesService.findDrafts();
+  }
 }

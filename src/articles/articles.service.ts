@@ -12,4 +12,12 @@ export class ArticlesService {
       },
     });
   }
+
+  findDrafts() {
+    return this.prisma.article.findMany({
+      where: {
+        published: false,
+      },
+    });
+  }
 }
