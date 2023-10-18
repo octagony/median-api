@@ -20,4 +20,11 @@ export class ArticlesService {
       },
     });
   }
+  findOne(id: number) {
+    return this.prisma.article.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
 }
