@@ -38,7 +38,7 @@ export class ArticlesController {
 
   @Post()
   @ApiCreatedResponse({ type: ArticleEntity })
-  createArticle(dto: CreateArticleDto) {
+  createArticle(@Body() dto: CreateArticleDto) {
     return this.articlesService.create(dto);
   }
 

@@ -29,8 +29,11 @@ export class ArticlesService {
       },
     });
   }
+
   async create(dto: CreateArticleDto) {
-    return await this.prisma.article.create({ data: dto });
+    return await this.prisma.article.create({
+      data: dto,
+    });
   }
 
   async update(id: number, dto: UpdateArticleDto) {
